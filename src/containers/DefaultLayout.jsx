@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
+import React, { Component } from 'react'//基础引入
+import { Route, Switch, Redirect, withRouter } from 'react-router-dom'//路由引入
 import { connect } from 'react-redux'
-import { Layout, BackTop, message } from 'antd'
+import { Layout, BackTop, message } from 'antd'//这是导入的antd组件库里面的
 import routes from '@/routes'
 import { menuToggleAction } from '@/store/actionCreators'
 import echarts from 'echarts/lib/echarts'
@@ -23,8 +23,8 @@ class DefaultLayout extends Component {
     }
 
     isLogin = () => {
-        if (!localStorage.getItem('user')) {
-            this.props.history.push('/login')
+        if (!localStorage.getItem('user')) {//获取指定‘user’本地存储的值 存起来的数据都会变成字符串的类型
+            this.props.history.push('/login')//不为空的话执行
         } else {
             this.setState({
                 menu: this.getMenu(menu)
@@ -32,8 +32,8 @@ class DefaultLayout extends Component {
         }
     }
 
-    loginOut = () => {
-        localStorage.clear()
+    loginOut = () => {//登出按钮的功能
+        localStorage.clear()//清理localStorage
         this.props.history.push('/login')
         message.success('登出成功!')
     }
